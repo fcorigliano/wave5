@@ -9,10 +9,11 @@ router.get('/products', (req, res) => {
 })
 
 //2. Obtener un producto específico mediante su ID “/api/products/:id”
-// router.get('/products/:id?', (req, res) => {
-//     const id = req.params.id;
-//     console.log('---> id', id);
-// })
+router.get('/products/:id', (req, res) => {
+    const id = req.params.id;
+    const product = products.filter(x => x.id == id);
+    res.json(product);
+})
 
 //3. Agregar un nuevo producto “/api/products”
 router.post('/products/add', (req, res) => {
@@ -36,6 +37,10 @@ router.put('/products/:id/:name', (req, res) => {
 })
 
 //5. Eliminar un producto mediante su ID “/api/products/:id”,
-
+router.delete('/products/:id', (req, res) => {
+    const id = req.params.id;
+    const product = products.filter(x => x.id != id);
+    res.json(product);
+})
 
 module.exports = { router, products };

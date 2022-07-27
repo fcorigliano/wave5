@@ -23,7 +23,7 @@ describe("PUNTO 1", () => {
 		expect(responseGetProducts.body.length).toBe(mockBackUp.length);
 	});
 });
-xdescribe("PUNTO 2", () => {
+describe("PUNTO 2", () => {
 	it("Debe ser un método GET a '/api/products/:id'", async () => {
 	
 		expect(productID.req.method).toBe("GET");
@@ -85,7 +85,7 @@ describe("PUNTO 4", () => {
 	});
 });
 
-xdescribe("PUNTO 5", () => {
+describe("PUNTO 5", () => {
 	it("Debe ser un metodo DELETE a '/products/:id'", async () => {
 		const deleteResponse = await api.delete("/api/products/2");
 		expect(deleteResponse.req.method).toBe("DELETE");
