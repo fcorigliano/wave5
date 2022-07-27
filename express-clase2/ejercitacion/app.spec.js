@@ -23,7 +23,7 @@ describe("PUNTO 1", () => {
 		expect(responseGetProducts.body.length).toBe(mockBackUp.length);
 	});
 });
-describe("PUNTO 2", () => {
+xdescribe("PUNTO 2", () => {
 	it("Debe ser un método GET a '/api/products/:id'", async () => {
 	
 		expect(productID.req.method).toBe("GET");
@@ -39,7 +39,7 @@ describe("PUNTO 2", () => {
 	});
 });
 
-xdescribe("PUNTO 3", () => {
+describe("PUNTO 3", () => {
 	it("Debería ser un método POST a '/products/add'", async () => {
 		const paramsRoute = await api.post("/api/products/add");
 		expect(paramsRoute.req.method).toBe("POST");
@@ -64,7 +64,7 @@ xdescribe("PUNTO 3", () => {
 	});
 });
 
-xdescribe("PUNTO 4", () => {
+describe("PUNTO 4", () => {
 	it("Debe ser un metodo PUT a '/products/:id/:name'", async () => {
 		const paramsRoute = await api.put("/api/products/2/phone");
 		expect(paramsRoute.req.method).toBe("PUT");
