@@ -11,14 +11,24 @@ que es res.locals? : https://www.geeksforgeeks.org/express-js-res-locals-propert
  */
 
 function user(req, res, next) {
-
+	res.locals.user = {
+		id: 2,
+		name: 'Facu',
+		admin: true
+	}
 		next()
 	
 };
 
 
  function auth(req, res,next) {
-	
+	const { name, admin } = res.locals.user;
+
+	if(admin){
+		res.send(`${name} es admin`)
+	} else{
+		res.send(`${name} no es admin`)
+	}
 	next()
 };
 

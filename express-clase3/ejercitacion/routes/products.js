@@ -11,7 +11,7 @@ http://localhost:3000/api/product/Logitech/1
 
 
 router.get("/product", (req, res) => {
-
+	res.send(brandsDB);
 });
 
 
@@ -57,9 +57,15 @@ http://localhost:3000/api/product
  * 	Ej: {message : "Marca agregada",brand: "Iphone"}
  * */
 
-router.post("/product", (req, res) => {
+ router.post('/product', (req, res) => {
+	 const id = req.body.id;
+    const name = req.body.name;
+    const description = req.body.description;
+    const obj = {id, name, description};
 
-});
+    products.push(obj);
+    res.send(`Se agregó el producto ${name}`);
+})
 
 /**
 	PUT
@@ -84,10 +90,11 @@ http://localhost:3000/api/product/1
 /**
  * Este método debe poder eliminar un producto
  */
-router.delete("/product/:id", (req, res) => {
-	
-
-});
+ router.delete('/product/:id', (req, res) => {
+    const id = req.params.id;
+    const product = productsDB.filter(x => x.id != id);
+    res.json(product);
+})
 
 
 
