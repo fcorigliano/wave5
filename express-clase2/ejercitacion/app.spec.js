@@ -48,7 +48,7 @@ describe("PUNTO 3", () => {
 
 	it("Debe agregar correctamente un nuevo producto", async () => {
 		let newProduct = {
-			name: "Iphon",
+			name: "Iphone",
 			price: 800,
 			quantity: 9,
 			colors: ["pink", "red"],
