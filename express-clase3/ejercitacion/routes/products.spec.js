@@ -17,7 +17,7 @@ let postResponse;
 let putResponse;
 let newProduct = {
 
-	name: "Iphon",
+	name: "Iphone",
 	id: 7,
 	description: 9,
 };
@@ -39,7 +39,7 @@ afterEach(() => {
 	productsDB = productBackup;
 });
 
-xdescribe("DELETE", () => {
+describe("DELETE", () => {
 	it("Debería ser un metodo DELETE a '/product/:id'", async () => {
 		expect(deleteResponse.req.method).toBe("DELETE");
 		expect(deleteResponse.res.statusCode).toBe(200);
@@ -85,7 +85,7 @@ describe("GET", () => {
 	});
 });
 
-xdescribe("POST", () => {
+describe("POST", () => {
 	it("/product debería poder agregar un producto", async () => {
 		const RouteProducts = await api.get("/api/product");
 		const contents = RouteProducts.body.map((pdct) => pdct.name);
@@ -99,7 +99,7 @@ xdescribe("POST", () => {
 	});
 });
 
-xdescribe("PUT", () => {
+describe("PUT", () => {
 	it("/product/:id debería poder actualizar el nombre de un producto", () => {
 		let brandName = putResponse.body.brandsDB.filter(
 			(brnd) => brnd.name === replaceBrand.name

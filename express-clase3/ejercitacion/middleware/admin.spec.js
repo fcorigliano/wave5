@@ -5,7 +5,7 @@ const { app } = require("../app");
 const {user,auth} = require('./admin');
 const api = supertest(app);
 
-describe("Middlewares",()=>{
+xdescribe("Middlewares",()=>{
   const req = htttpMocks.createRequest({method:'GET', url:'/api/user'});
   const res = htttpMocks.createResponse();
   

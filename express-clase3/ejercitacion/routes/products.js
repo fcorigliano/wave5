@@ -2,18 +2,81 @@ const express = require("express");
 const router = express.Router();
 let brandsDB = require("../utils/products");
 const {user,auth} = require("../middleware/admin");
-
-/************************************************************* 
-	GET
-http://localhost:3000/api/product/Logitech/1
- ************************************************************/
+const productsDB = require("../utils/products");
 
 
+        /***************** GET *****************/
 
-router.get("/product", (req, res) => {
-	res.send(brandsDB);
-});
+// La ruta /product debería mostar el array de objetos
+router.get('/product', (req, res) => {
+    res.json(productsDB);
+})
 
+// /product/:brand/:productId? deberia responder con un objeto
+router.get('/product/:brand/:productId', (req, res) => {
+    // const { brand, productId } = req.params;
+    // const product = productsDB.filter(x => x.name === brand && x.products.at.id === parseInt(productId));
+
+    res.send("Esto no anda");
+})
+
+// El objeto debería tener las propiedades 'brand,descripcion y product'
+
+
+// Si no encuentra la marca buscada debería mostrar el mensaje 'Marca no encontrada'
+router.get('/product/:brand', (req, res) => {
+    const { brand } = req.params;
+    const product = productsDB.find(x => x.name === brand);
+
+    if(product)
+        res.json(product);
+    else
+        res.send("Marca no encontrada");
+})
+
+
+
+
+        /***************** POST *****************/
+
+// /product debería poder agregar un producto
+router.post('/product/add', (req, res) => {
+    const { name, id, description } = req.body;
+    const product = { name, id, description };
+
+    productsDB.push(product);
+
+    res.json(product);
+})
+
+// /product cuando agrega un producto, devuelve un objeto con los atributos 'message' y 'brand'
+
+
+
+
+        /***************** PUT *****************/
+
+// /product/:id debería poder actualizar el nombre de un producto
+// Si la modificacion se hizo correctamente, debria devolver un objeto con el atributo 'message: Producto Actualizado'
+
+router.put('/product/:id/:name', (req, res) => {
+    const { id, name } = req.params;
+    const product = productsDB.find(x => x.id === parseInt(id));
+    
+    if(product){
+        product.name = name;
+        res.send(`La marca ${name} fue actualizada correctamente`);
+    } else
+        res.send("Marca inexistente");
+})
+
+
+
+        /***************** DELETE *****************/
+
+router.delete('/product/:id', (req, res) => {
+    
+})
 
 /**
 middleware a nivel de rutas: 
@@ -23,25 +86,12 @@ en este caso utilizamos las dos funciones que definimos en el archivo
 
  */
 // esto no tiene test
-router.get("/user",user,auth,(req,res)=>{
-
-})
-
-
-
-router.get("/product", (req, res) => {
-	res.json(brandsDB);
-});
-
 
 
 // Si se encuenta el producto,devuelve un objeto con:
 //brand , el nombre de la marca
 //description, la descripcion de la marca
 //product, el producto entero que corresponde a esa marca
-router.get("/product/:brand/:productId?", (req, res) => {
-
-});
 
 /**
 POST
@@ -57,16 +107,6 @@ http://localhost:3000/api/product
  * 	Ej: {message : "Marca agregada",brand: "Iphone"}
  * */
 
- router.post('/product', (req, res) => {
-	 const id = req.body.id;
-    const name = req.body.name;
-    const description = req.body.description;
-    const obj = {id, name, description};
-
-    products.push(obj);
-    res.send(`Se agregó el producto ${name}`);
-})
-
 /**
 	PUT
 http://localhost:3000/api/product/2
@@ -76,9 +116,6 @@ http://localhost:3000/api/product/2
  * dentro del array de productos y reemplazar el nombre
  * de la brand por el nombre que llega por body
  */
-router.put("/product/:id", (req, res) => {
-	
-});
 
 
 /**
@@ -90,12 +127,6 @@ http://localhost:3000/api/product/1
 /**
  * Este método debe poder eliminar un producto
  */
- router.delete('/product/:id', (req, res) => {
-    const id = req.params.id;
-    const product = productsDB.filter(x => x.id != id);
-    res.json(product);
-})
-
 
 
 
