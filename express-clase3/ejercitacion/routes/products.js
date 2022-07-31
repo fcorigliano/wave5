@@ -74,9 +74,12 @@ router.put('/product/:id/:name', (req, res) => {
 
         /***************** DELETE *****************/
 
-router.delete('/product/:id', (req, res) => {
-    
-})
+router.delete("/product/:id", (req, res) => {
+    const { id } = req.params;
+    const product = brandsDB.find(x => x.id === parseInt(id));
+    brandsDB = brandsDB.filter(x => x.id !== parseInt(id));
+    res.status(200).json({message:'producto eliminado', name: product.name});
+});
 
 /**
 middleware a nivel de rutas: 
