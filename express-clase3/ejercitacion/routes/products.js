@@ -31,7 +31,7 @@ router.get('/product/:brand', (req, res) => {
     if(product)
         res.json(product);
     else
-        res.send("Marca no encontrada");
+        res.status(400).json({message:'Marca no encontrada'});
 })
 
 
@@ -40,16 +40,17 @@ router.get('/product/:brand', (req, res) => {
         /***************** POST *****************/
 
 // /product debería poder agregar un producto
+// /product cuando agrega un producto, devuelve un objeto con los atributos 'message' y 'brand'
+
 router.post('/product/add', (req, res) => {
     const { name, id, description } = req.body;
     const product = { name, id, description };
 
     productsDB.push(product);
 
-    res.json(product);
+    res.status(200).json({message:'Producto agregado correctamente', name: product.name});
 })
 
-// /product cuando agrega un producto, devuelve un objeto con los atributos 'message' y 'brand'
 
 
 
@@ -65,9 +66,9 @@ router.put('/product/:id/:name', (req, res) => {
     
     if(product){
         product.name = name;
-        res.send(`La marca ${name} fue actualizada correctamente`);
+        res.status(200).json({message:'Producto actualizado', name: product.name});
     } else
-        res.send("Marca inexistente");
+        res.status(400).json({message:'Marca inexistente'});
 })
 
 
