@@ -54,7 +54,6 @@ router.post('/product/add', (req, res) => {
 
 
 
-
         /***************** PUT *****************/
 
 // /product/:id debería poder actualizar el nombre de un producto
