@@ -20,7 +20,16 @@ EJERCICIO
 function Home() {
 	return (
 		<>
-			
+			<header>Esto es una cabecera</header>
+			<nav>Esto es un nav</nav>
+			<main>
+				<section role='section'>Esto es una sección</section>
+				<article>Esto es un artículo</article>
+				<figure>
+					<a href='https://www.linkedin.com/in/facundo-corigliano-4285061ba/' target='_blank' rel="noreferrer"><img src='/perfil.jpg' width='200px' alt='Facundo Corigliano'></img></a>
+				</figure>
+			</main>
+			<footer>Esto es un footer</footer>
 		</>
 	);
 }
