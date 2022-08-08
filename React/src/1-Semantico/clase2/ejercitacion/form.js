@@ -21,7 +21,56 @@ function Form() {
 	return (
 		<>
 			<form>
-				
+				<fieldset>
+					<legend>Punto 1</legend>
+					<label htmlFor='name'>Name</label>
+					<input id='name' type='text'></input>
+					<label htmlFor='email'>Email</label>
+					<input id='email' type='email'></input>
+					<label htmlFor='phone'>Phone</label>
+					<input id='phone' type='number'></input>
+				</fieldset>
+			</form>
+
+			<form>
+				<fieldset>
+					<legend>Punto 2</legend>
+					<label htmlFor='countries'>Countries</label>
+					<select id='countries'>
+						<option value='Argentina'>Argentina</option>
+						<option value='Chile'>Chile</option>
+						<option value='Uruguay'>Uruguay</option>
+						<option value='Bolivia'>Bolivia</option>
+						<option value='Colombia'>Colombia</option>
+						<option value='México'>México</option>
+						<option value='Venezuela'>Venezuela</option>
+					</select>
+				</fieldset>
+			</form>
+
+			<form>
+				<fieldset>
+					<legend>Punto 3</legend>
+					<label htmlFor='envio'>Envio</label>
+					<input id='envio' type='radio' name='logistica'></input>
+
+					<label htmlFor='retiro'>Retiro</label>
+					<input id='retiro' type='radio' name='logistica'></input>
+				</fieldset>
+			</form>
+
+			<form>
+				<fieldset>
+					<legend>Punto 4</legend>
+					<label htmlFor='bicicleta'>Bicicleta</label>
+					<input id='bicicleta' type='checkbox'></input>
+
+					<label htmlFor='reloj'>Reloj</label>
+					<input id='reloj' type='checkbox'></input>
+
+					<label htmlFor='notebook'>Notebook</label>
+					<input id='notebook' type='checkbox'></input>
+				</fieldset>
 			</form>
 		</>
 	);
