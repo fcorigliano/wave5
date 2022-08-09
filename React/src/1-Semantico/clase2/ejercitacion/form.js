@@ -24,11 +24,11 @@ function Form() {
 				<fieldset>
 					<legend>Punto 1</legend>
 					<label htmlFor='name'>Name</label>
-					<input id='name' type='text'></input>
+					<input id='name' type='text' placeholder='Facundo Corigliano'></input>
 					<label htmlFor='email'>Email</label>
-					<input id='email' type='email'></input>
+					<input id='email' type='email' placeholder='facundo.corigliano@mercadolibre.com'></input>
 					<label htmlFor='phone'>Phone</label>
-					<input id='phone' type='number'></input>
+					<input id='phone' type='number' placeholder='15-3897-6517'></input>
 				</fieldset>
 			</form>
 
